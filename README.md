@@ -1,7 +1,5 @@
 # OOP-Ex2-Teaching-Tool
 Simple, extensible web app for classroom management: attendance and other tools like comments and polls.
-# OOP-Ex2-Teaching-Tool
-Simple, extensible web app for classroom management: attendance and other tools like comments and polls.
 
 ## Problem
 Existing online teaching tools are complicated: they require logins, installation or training, and take valuable time away from the lesson. They also make little use of AI (lecture summaries, homework feedback), and attendance is still often taken manually, which is slow and easy to fake. We want a single, simple tool that opens in the browser of a phone: lecturers get attendance and polls in seconds, students get feedback and their attendance history, and the structure can grow with additional small tools.
@@ -26,6 +24,7 @@ Existing online teaching tools are complicated: they require logins, installatio
 
 ## Open Questions
 - How do we prevent attendance fraud (a student checking in for a friend)? Options to evaluate: a rotating QR code on the classroom screen, a short-lived check-in link, or a combination.
+*ans:* QR code that changes every 7 seconds. in addition, if student don't ans a poll, the lecturer can Cancel the attendance record after observing that the student is not actually present.
 - What counts as "relative position" in the homework comparison? Options to evaluate: a verbal description (e.g., "your approach is common in the class") or a numeric ranking.
 
 ## Future Work
