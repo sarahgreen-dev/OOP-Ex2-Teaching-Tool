@@ -30,6 +30,7 @@ Data is stored in the platform's database. Login is by email (provided by the pl
 ### F1: Attendance (the main feature)
 | ID | Requirement | Priority |
 |----|-------------|----------|
+| FR-1.10 | On first login the user chooses Student (listed first) or Lecturer. Choosing Lecturer requires the secret lecturer access code, which is verified on the server and never displayed. After 5 wrong attempts at first login, the user becomes a student. At any time a user can change role from the header: lecturer to student freely, student to lecturer with the code (no attempt limit). | Must |
 | FR-1.1 | The lecturer can create a course and add students (manually or by uploading a CSV with name and email). | Must |
 | FR-1.2 | The lecturer can open a lesson in a course; the system displays a QR code on the screen. | Must |
 | FR-1.3 | The QR contains a link with a check-in code that changes every 30 seconds, so a photo of the QR sent to a friend stops working quickly. | Should |
@@ -82,7 +83,7 @@ Data is stored in the platform's database. Login is by email (provided by the pl
 | NFR-3 Capacity | Supports a class of at least 60 students checking in within 2 minutes. |
 | NFR-4 Compatibility | Works on current Chrome / Safari on Android and iPhone. |
 | NFR-5 Privacy | National ID numbers are not stored. Anonymous comments do not reveal the name to the lecturer. Students cannot see other students' homework or reviews. |
-| NFR-6 Security | Only the course lecturer can export data or see the full attendance. A check-in code expires after 30 seconds. |
+| NFR-6 Security | Only the course lecturer can export data or see the full attendance. The lecturer role requires the secret lecturer access code (FR-1.10), checked on the server. Security is at demo level (see Constraints). A check-in code expires after 30 seconds. |
 | NFR-7 AI reliability | Every LLM result is shown as a suggestion the lecturer can edit; nothing changes automatically based on the result. |
 | NFR-8 Language | English interface (Hebrew optional). |
 
@@ -92,3 +93,4 @@ Data is stored in the platform's database. Login is by email (provided by the pl
 ## 6. Constraints
 - Built on Base44 (managed database, login, and LLM integration); no server of our own.
 - No external Zoom / Moodle API.
+- Security is at demo level. The lecturer access code is a shared secret, and after the first login there is no limit on wrong attempts, so a determined user could guess it. This is an accepted limitation for a classroom demo; production hardening is out of scope (see the SoW).

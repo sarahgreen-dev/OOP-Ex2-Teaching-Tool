@@ -25,7 +25,8 @@ Attendance with a spreadsheet export is the main feature, so it gets built first
 | # | Feature | Priority | In the demo? |
 |---|---------|----------|--------------|
 | F1 | Attendance: students scan a QR code on the projector, the lecturer sees a live list and can export it to a spreadsheet (CSV / Google Sheets) | Must (main feature) | Yes |
-| F1b | Photo headcount: the lecturer takes a photo of the class, an LLM counts the people, and the app compares that to the number of check-ins | Should | Yes, if time allows |
+| F1b | As an alternative to scanning, a student can type the 6-character check-in code shown on the lecturer’s screen. The same rules apply as for scanning (enrolled students only, no duplicates, code expires). The student’s check-in screen explains both options: scanning with the phone camera or typing the code. | Should | Yes |
+| F1c | Photo headcount: the lecturer takes a photo of the class, an LLM counts the people, and the app compares that to the number of check-ins | Should | Yes, if time allows |
 | F2 | Comments and suggestions during or after class, optionally anonymous | Should | Yes |
 | F3 | Quick polls: one question, created in under 30 seconds, results update live | Must | Yes |
 | F4 | Video summary: the lecturer uploads a transcript exported from Zoom / Meet and gets a structured summary | Could | Minimal, or design only |
@@ -55,9 +56,10 @@ docs/conclusions.md  results and lessons learned (after the demo)
 The demo is built with Base44, an AI app builder that comes with a database, login and LLM calls. The tools report explains why I picked it.
 
 1. Open the app: _<link>_
-2. Log in as the lecturer, create a lesson and click "Show QR".
-3. Students scan the QR with the phone camera and they are checked in.
-4. The lecturer clicks "Export to spreadsheet".
+2. Log in as the lecturer: choose "I'm a lecturer" and enter the lecturer code. The code is in a [restricted Google Doc](https://docs.google.com/document/d/1agnqqJ95eZpZB1UG4gcHp0zZ8SrM7fWMY4Fgs19HKw0/edit?usp=sharing) shared only with the course lecturer.
+3. Create a lesson and click "Show QR". 
+4. Students log in with the email enrolled in the course, then scan the QR with the phone camera, or tap "Enter lesson code" and type the code shown on the screen. They are checked in.
+5. The lecturer clicks "Export to spreadsheet".
 
 ## 6. Status
 
