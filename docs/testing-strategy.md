@@ -95,22 +95,36 @@ Results from the LLM can be wrong (SoW, Assumptions). So we do not test them as 
 
 ## 9. Test log
 
-We fill this table when we run the tests, before the demo and after it.
+We ran the tests on 22/11/2026 on the demo app, with the lecturer account and two real students on their own devices. "Not run" means we did not test it yet.
 
 | ID | Date | Result | Notes |
 |----|------|--------|-------|
-| TC-1 | | | |
-| TC-2 | | | |
-| TC-3 | | | |
-| TC-4 | | | |
-| TC-5 | | | |
-| TC-8 | | | |
-| AT-1 | | | |
-| AT-2 | | | |
-| AT-3 | | | |
-| AT-4 | | | |
+| TC-1 | 22/11/2026 | Pass | A lesson opens with a QR code and a 6-character code |
+| TC-2 | 22/11/2026 | Partly | The code was different in each screenshot (for example GFCKQY, 855NNZ, 94ZYVE). We did not time the 30-second interval |
+| TC-3 | 22/11/2026 | Pass | A second student checked in and appeared on the lecturer list with a time, and the counter rose from 0/3 to 1/3. We did not measure the 2-second limit |
+| TC-4 | 22/11/2026 | Pass | A second check-in with the same student gave the normal confirmation, and the counter stayed 1/3. There is no special "already checked in" message |
+| TC-5 | | Not run | |
+| TC-6 | | Not run | The list says "Tap a name to change", but we did not try it |
+| TC-7 | | Not run | |
+| TC-8 | 22/11/2026 | Pass | The lesson export downloaded and opened. Columns: Name, Email, Status, Checked in at. The course export also worked, with one column for each lesson |
+| TC-9 | 22/11/2026 | Pass | A Hebrew name appeared correctly in both files |
+| TC-10 | | Not run | |
+| TC-11 | | Not run | We tested with two students, not a full class |
+| TC-12 | | Not in the demo | Photo headcount is design only |
+| TC-13 | | Not run | The form shows a 280-character counter |
+| TC-14 | 22/11/2026 | Pass | An anonymous comment appeared as "Anonymous", and a normal comment showed the name |
+| TC-15 | 22/11/2026 | Partly | A poll with 2 options was created. We did not test 6 options |
+| TC-16 | 22/11/2026 | Pass | After voting, the student saw "Thanks" again after a refresh, and the poll showed 1 vote |
+| TC-17 | 22/11/2026 | Pass | After the lecturer closed the poll, the student could no longer vote. The results stayed on the lecturer screen |
+| TC-18 to TC-20 | | Not in the demo | F4 and F5 are design only |
+| AT-1 | | Not run | We did not time the check-in with a stopwatch |
+| AT-2 | 22/11/2026 | Pass | See TC-8 |
+| AT-3 | 22/11/2026 | Pass | A poll was created and answered in real time on two devices |
+| AT-4 | 22/11/2026 | Partly | On GitHub, the component diagram, the class diagram and sequence diagrams 4.4 and 4.5 displayed correctly. We still need to check the other diagrams and files |
 
-Earlier, when we compared the tools, we ran a similar flow (create a lesson, QR, check-in, live list, CSV) on a separate Base44 test project with one account. That test is described in the [tools report](tools-report.md). It does not replace these tests, because the demo app is a different project and we have not yet tested it with a second phone.
+Notes from the export tests: the course export uses the letters V (present), L (late) and X (absent), and the file has no legend. We explain this in the demo.
+
+Earlier, when we compared the tools, we ran a similar flow on a separate Base44 test project with one account. That test is described in the [tools report](tools-report.md). The results above are from the demo app itself.
 
 ## 10. Known limits
 
