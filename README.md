@@ -25,11 +25,11 @@ Attendance with a spreadsheet export is the main feature, so it gets built first
 | # | Feature | Priority | In the demo? |
 |---|---------|----------|--------------|
 | F1 | Attendance: students scan a QR code on the projector, the lecturer sees a live list and can export it to a spreadsheet (CSV / Google Sheets) | Must (main feature) | Yes |
-| F1b | Photo headcount: the lecturer takes a photo of the class, an LLM counts the people, and the app compares that to the number of check-ins | Should | Yes, if time allows |
+| F1b | Photo headcount: the lecturer takes a photo of the class, an LLM counts the people, and the app compares that to the number of check-ins | Should | Design only |
 | F2 | Comments and suggestions during or after class, optionally anonymous | Should | Yes |
 | F3 | Quick polls: one question, created in under 30 seconds, results update live | Must | Yes |
-| F4 | Video summary: the lecturer uploads a transcript exported from Zoom / Meet and gets a structured summary | Could | Minimal, or design only |
-| F5 | Homework review: an LLM reviews a submission and compares it with the other submissions | Could | Minimal, or design only |
+| F4 | Video summary: the lecturer uploads a transcript exported from Zoom / Meet and gets a structured summary | Could | Design only |
+| F5 | Homework review: an LLM reviews a submission and compares it with the other submissions | Could | Design only |
 
 ### Out of scope
 These follow the assignment guidelines:
@@ -40,31 +40,33 @@ These follow the assignment guidelines:
 ## 4. Repository structure
 
 ```
-README.md                  this file: problem and scope
-docs/SoW.md                Statement of Work
-docs/SRS.md                Software Requirements Specification
-docs/use-cases.md          main use cases / user stories
-docs/architecture.md       components, class diagrams, sequence diagrams
-docs/testing-strategy.md   testing strategy (per class)
-docs/tools-report.md       tools report (Base44 vs Lovable vs Claude)
-docs/conclusions.md        results and lessons learned (after the demo)
+README.md                   this file: problem and scope
+docs/SoW.md                 Statement of Work
+docs/SRS.md                 Software Requirements Specification
+docs/use-cases.md           main use cases / user stories
+docs/architecture.md        components, class diagrams, sequence diagrams
+docs/testing-strategy.md    testing strategy (per class)
+docs/tools-report.md        tools report (Base44 vs Lovable vs Claude)
+docs/conclusions.md         results and lessons learned (after the demo)
 ```
 
 ## 5. How to run the demo
 
-The demo is built with Base44, an AI app builder that comes with a database, login and LLM calls. The tools report explains why we picked it.
+The demo is built with Base44, an AI app builder that comes with a database, login and LLM calls. The [tools report](docs/tools-report.md) explains why we picked it.
 
 1. Open the app: [space-class-pulse-live.base44.app](https://space-class-pulse-live.base44.app/)
-2. Log in as the lecturer, create a lesson and click "Show QR".
-3. Students scan the QR with the phone camera and they are checked in.
-4. The lecturer clicks "Export to spreadsheet".
+2. Log in. Choose "Lecturer" and enter the lecturer access code. Create a course and add the students (by hand or with a CSV file).
+3. Start a lesson and click "Show QR".
+4. Students scan the QR with the phone camera, or tap "Enter lesson code", and they are checked in.
+5. The lecturer creates a quick poll, and students vote. Students can also post a comment, anonymously if they want.
+6. The lecturer clicks "Export" to download the attendance as a spreadsheet.
 
 ## 6. Status
 
 - [x] README (problem and scope)
 - [x] Statement of Work
-- [ ] Tools report
-- [ ] SRS, use cases, architecture, testing strategy
-- [ ] Demo app
+- [x] Tools report
+- [x] SRS, use cases, architecture, testing strategy
+- [x] Demo app (attendance, polls and comments)
 - [ ] Demo in class
 - [ ] Conclusions
