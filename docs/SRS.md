@@ -31,6 +31,7 @@ Data is stored in the platform's database. Login is by email (provided by the pl
 | ID | Requirement | Priority |
 |----|-------------|----------|
 | FR-1.1 | The lecturer can create a course and add students (manually or by uploading a CSV with name and email). | Must |
+| FR-1.12 | A lecturer can have only one open lesson at a time. A lesson that stays open for more than 4 hours is closed automatically. | Should |
 | FR-1.2 | The lecturer can open a lesson in a course; the system displays a QR code on the screen. | Must |
 | FR-1.3 | The QR contains a link with a check-in code that changes every 30 seconds, so a photo of the QR sent to a friend stops working quickly. | Should |
 | FR-1.4 | A student who scans the QR is checked in to the lesson with a timestamp. Scanning again does not create a duplicate. | Must |
