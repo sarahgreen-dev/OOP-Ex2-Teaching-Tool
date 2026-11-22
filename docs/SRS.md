@@ -1,6 +1,6 @@
 # Software Requirements Specification (SRS): ClassPulse
 
-Version 0.1 · _<date>_ · _<names>_
+Version 0.1 · 22/11/2026 · Sarah Green, Nerya Azani
 
 ## 1. Introduction
 
@@ -30,7 +30,6 @@ Data is stored in the platform's database. Login is by email (provided by the pl
 ### F1: Attendance (the main feature)
 | ID | Requirement | Priority |
 |----|-------------|----------|
-| FR-1.10 | On first login the user chooses Student (listed first) or Lecturer. Choosing Lecturer requires the secret lecturer access code, which is verified on the server and never displayed. After 5 wrong attempts at first login, the user becomes a student. At any time a user can change role from the header: lecturer to student freely, student to lecturer with the code (no attempt limit). | Must |
 | FR-1.1 | The lecturer can create a course and add students (manually or by uploading a CSV with name and email). | Must |
 | FR-1.2 | The lecturer can open a lesson in a course; the system displays a QR code on the screen. | Must |
 | FR-1.3 | The QR contains a link with a check-in code that changes every 30 seconds, so a photo of the QR sent to a friend stops working quickly. | Should |
@@ -40,6 +39,8 @@ Data is stored in the platform's database. Login is by email (provided by the pl
 | FR-1.7 | The lecturer can export the attendance of a single lesson, or of the whole course (students × lessons), as a CSV file that opens in Excel / Google Sheets. | Must |
 | FR-1.8 | The lecturer can take or upload a photo of the classroom; the system asks the LLM to count and shows the number in the photo versus the number checked in. | Should |
 | FR-1.9 | If the difference exceeds a threshold (for example, 2), the system shows a warning. | Should |
+| FR-1.10 | On first login the user chooses Student (listed first) or Lecturer. Choosing Lecturer requires the secret lecturer access code, which is verified on the server and never displayed. After 5 wrong attempts at first login, the user becomes a student. At any time a user can change role from the header: lecturer to student freely, student to lecturer with the code (no attempt limit). | Must |
+
 
 ### F2: Feedback and suggestions
 | ID | Requirement | Priority |
@@ -50,14 +51,14 @@ Data is stored in the platform's database. Login is by email (provided by the pl
 | FR-2.4 | The lecturer can mark a comment as "answered". | Could |
 
 ### F3: Quick polls
-| ID | Requirement | Priority |
-|----|-------------|----------|
+| ID     | Requirement | Priority |
+|--------|-------------|----------|
 | FR-3.1 | The lecturer can create a poll with one question and 2 to 5 answers in under 30 seconds. | Must |
 | FR-3.2 | Open polls appear automatically on the screens of students in that lesson. | Must |
 | FR-3.3 | Each student can vote once per poll. | Must |
 | FR-3.4 | The lecturer sees live results as a bar chart and can close the poll. | Must |
 | FR-3.5 | (Optional) The LLM suggests a poll question based on a topic the lecturer types. | Could |
-| FR-3.5 | After a poll is closed, the system shows the lecturer the checked-in students who did not vote, and the lecturer can unmark their attendance. | Could |
+| FR-3.6 | After a poll is closed, the system shows the lecturer the checked-in students who did not vote, and the lecturer can unmark their attendance. | Could |
 
 ### F4: Video summary
 | ID | Requirement | Priority |
