@@ -94,3 +94,4 @@ Data is stored in the platform's database. Login is by email (provided by the pl
 - Built on Base44 (managed database, login, and LLM integration); no server of our own.
 - No external Zoom / Moodle API.
 - Security is at demo level. The lecturer access code is a shared secret, and after the first login there is no limit on wrong attempts, so a determined user could guess it. This is an accepted limitation for a classroom demo; production hardening is out of scope (see the SoW).
+- Anonymous comments are anonymous in the display only: the author's name and email are still stored in the database and are not shown to the lecturer or other students. Full anonymity is out of scope for the demo.
