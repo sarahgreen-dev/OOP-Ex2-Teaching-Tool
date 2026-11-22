@@ -60,6 +60,8 @@ Data is stored in the platform's database. Login is by email (provided by the pl
 | FR-3.4 | The lecturer sees live results as a bar chart and can close the poll. | Must |
 | FR-3.5 | (Optional) The LLM suggests a poll question based on a topic the lecturer types. | Could |
 | FR-3.6 | After a poll is closed, the system shows the lecturer the checked-in students who did not vote, and the lecturer can unmark their attendance. | Could |
+| FR-3.7 |A lesson can have only one open poll at a time. Opening a new poll requires closing the current one. Closed polls remain visible as read-only results. | Should |
+
 
 ### F4: Video summary
 | ID | Requirement | Priority |
