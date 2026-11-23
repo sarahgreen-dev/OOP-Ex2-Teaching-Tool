@@ -55,7 +55,7 @@ docs/conclusions.md         results and lessons learned (after the demo)
 The demo is built with Base44, an AI app builder that comes with a database, login and LLM calls. The [tools report](docs/tools-report.md) explains why we picked it.
 
 1. Open the app: [space-class-pulse-live.base44.app](https://space-class-pulse-live.base44.app/)
-2. Log in. Choose "Lecturer" and enter the lecturer access code. Create a course and add the students (by hand or with a CSV file).
+2. Log in. Choose "Lecturer" and enter the lecturer access code. The code is in a [restricted Google Doc](https://docs.google.com/document/d/1agnqqJ95eZpZB1UG4gcHp0zZ8SrM7fWMY4Fgs19HKw0/edit?usp=sharing) shared only with the course lecturer. Create a course and add the students (by hand or with a CSV/excel file).
 3. Start a lesson and click "Show QR".
 4. Students scan the QR with the phone camera, or tap "Enter lesson code", and they are checked in.
 5. The lecturer creates a quick poll, and students vote. Students can also post a comment, anonymously if they want.
