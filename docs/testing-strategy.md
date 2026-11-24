@@ -30,7 +30,7 @@ ClassPulse is built on Base44, which provides the database, login and hosting. W
 | CourseService, `Course`, `Enrollment` | A course can be created. Students can be added by hand and from a CSV. A CSV with a missing column is refused | FR-1.1 |
 | LessonService, `Lesson` | A lesson opens with a code. The code changes every 30 seconds. Closing a lesson stops check-ins | FR-1.2, FR-1.3 |
 | AttendanceService, `AttendanceRecord` | A valid scan is recorded with a time. A second scan creates no duplicate. An expired code is refused. The lecturer can mark and unmark a student | FR-1.4 to FR-1.6 |
-| ExportService | The CSV opens in Excel and Google Sheets. It has the right columns and rows. Hebrew names appear correctly. A non-lecturer cannot export | FR-1.7, NFR-6 |
+| ExportService |The Excel file (.xlsx) opens in Excel and Google Sheets. It has the right columns and rows, and a legend for V, L and X. Hebrew names appear correctly. A non-lecturer cannot export | FR-1.7, NFR-6 |
 | HeadcountService, `HeadcountCheck` | The count from a photo is shown next to the check-in count. A warning appears when the difference is above the threshold | FR-1.8, FR-1.9 |
 | FeedbackService, `Comment` | A comment of up to 280 characters is saved. Longer text is refused. An anonymous comment shows no name. "+1" sorts the list | FR-2.1 to FR-2.4 |
 | PollService, `Poll`, `Vote` | A poll with 2 to 5 options can be created. Each student votes once. Results update live. Closing stops voting | FR-3.1 to FR-3.6 |
