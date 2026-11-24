@@ -31,16 +31,19 @@ Data is stored in the platform's database. Login is by email (provided by the pl
 | ID | Requirement | Priority |
 |----|-------------|----------|
 | FR-1.1 | The lecturer can create a course and add students (manually or by uploading a CSV with name and email). | Must |
-| FR-1.12 | A lecturer can have only one open lesson at a time. A lesson that stays open for more than 4 hours is closed automatically. | Should |
 | FR-1.2 | The lecturer can open a lesson in a course; the system displays a QR code on the screen. | Must |
 | FR-1.3 | The QR contains a link with a check-in code that changes every 30 seconds, so a photo of the QR sent to a friend stops working quickly. | Should |
 | FR-1.4 | A student who scans the QR is checked in to the lesson with a timestamp. Scanning again does not create a duplicate. | Must |
 | FR-1.5 | The lecturer sees a live list: present / absent / late (after N minutes). | Must |
 | FR-1.6 | The lecturer can manually mark or unmark a student's attendance. | Must |
-| FR-1.7 | The lecturer can export the attendance of a single lesson, or of the whole course (students × lessons), as a CSV file that opens in Excel / Google Sheets. | Must |
+| FR-1.7 | The lecturer can export the attendance of the whole course (students × lessons) as an Excel file, with a legend explaining the symbols V (present), L (late) and X (absent). The export contains attendance only. | Must |
 | FR-1.8 | The lecturer can take or upload a photo of the classroom; the system asks the LLM to count and shows the number in the photo versus the number checked in. | Should |
 | FR-1.9 | If the difference exceeds a threshold (for example, 2), the system shows a warning. | Should |
 | FR-1.10 | On first login the user chooses Student (listed first) or Lecturer. Choosing Lecturer requires the secret lecturer access code, which is verified on the server and never displayed. After 5 wrong attempts at first login, the user becomes a student. At any time a user can change role from the header: lecturer to student freely, student to lecturer with the code (no attempt limit). | Must |
+| FR-1.11 | A lecturer can have only one open lesson at a time. A lesson that stays open for more than 4 hours is closed automatically. | Should |
+| FR-1.12 | The lecturer can export a single lesson as one Excel file: an attendance sheet with the legend, plus a poll results sheet and a comments sheet, each only if the lesson had polls or comments. Anonymous comments appear as "Anonymous". | Should |
+
+
 
 
 ### F2: Feedback and suggestions
