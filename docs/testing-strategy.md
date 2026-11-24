@@ -46,11 +46,11 @@ Attendance is the main feature, so it has the most detailed tests.
 | TC-1 | Open a lesson | Log in as lecturer, create a lesson | A QR code and a short code are shown |
 | TC-2 | Code rotation | Watch the code for one minute | The code changes every 30 seconds |
 | TC-3 | Valid check-in | Scan the QR with a phone | A confirmation appears in under 2 seconds. The student appears on the lecturer list in under 5 seconds |
-| TC-4 | Duplicate scan | Scan again with the same student | The system says it was already recorded. The list still shows one row |
+| TC-4 | Duplicate scan | Scan again with the same student | The system shows the normal confirmation and creates no second record. The list still shows one row |
 | TC-5 | Expired code | Open a link from an old QR after more than 30 seconds | The system refuses and asks for the current code |
 | TC-6 | Manual unmark | Lecturer unmarks a student | The student disappears from the present list |
 | TC-7 | Manual mark | Lecturer marks an absent student | The student appears as present |
-| TC-8 | Export one lesson | Click Export | A CSV downloads and opens in Excel or Google Sheets with the right rows |
+| TC-8 | Export one lesson | Click Export | An Excel file (.xlsx) downloads and opens with the right rows and a legend for V, L and X |
 | TC-9 | Hebrew names | Check in with a Hebrew name, then export | The name appears correctly in the file |
 | TC-10 | Student cannot export | Log in as a student and look for the export | No export is available, or the system refuses |
 | TC-11 | Many students | 20 or more phones check in within 2 minutes | All appear on the list. No errors |
@@ -68,6 +68,9 @@ Attendance is the main feature, so it has the most detailed tests.
 | TC-18 | F4 | Upload the example Zoom transcript | A summary appears. The lecturer can edit it |
 | TC-19 | F5 | Submit an assignment from the example list | A review appears, based on the rubric |
 | TC-20 | F5 | A student opens another student's review | The system does not show it |
+| TC-21 | Roles | A student opens a lecturer page by its link. Then the student asks to change role, first with a wrong code, then with the right code, and then goes back to student | The student is sent to the student page. The wrong code is refused. A new lecturer does not see other lecturers' courses. Nothing is lost after switching back |
+| TC-22 | F2 | The lecturer marks a comment as answered. A student tries to +1 it | The comment shows an "Answered" label. +1 is handled according to the rules of the app |
+| TC-23 | Load | The lecturer page and a student page stay open for 4 minutes with an open poll, then a student votes | No error or rate-limit message appears. The vote shows on the lecturer page |
 
 ## 6. Acceptance tests
 
@@ -95,7 +98,7 @@ Results from the LLM can be wrong (SoW, Assumptions). So we do not test them as 
 
 ## 9. Test log
 
-We ran the tests on 22/11/2026 on the demo app, with the lecturer account and two real students on their own devices. "Not run" means we did not test it yet.
+We ran the tests on 22/11/2026 and 23/11/2026 on the demo app, with the lecturer account and real student accounts on their own devices. "Not run" means we did not test it yet. Screenshots of the tests of 23/11/2026 are in `docs/screenshots/`.
 
 | ID | Date | Result | Notes |
 |----|------|--------|-------|
@@ -103,26 +106,29 @@ We ran the tests on 22/11/2026 on the demo app, with the lecturer account and tw
 | TC-2 | 22/11/2026 | Partly | The code was different in each screenshot (for example GFCKQY, 855NNZ, 94ZYVE). We did not time the 30-second interval |
 | TC-3 | 22/11/2026 | Pass | A second student checked in and appeared on the lecturer list with a time, and the counter rose from 0/3 to 1/3. We did not measure the 2-second limit |
 | TC-4 | 22/11/2026 | Pass | A second check-in with the same student gave the normal confirmation, and the counter stayed 1/3. There is no special "already checked in" message |
-| TC-5 | | Not run | |
-| TC-6 | | Not run | The list says "Tap a name to change", but we did not try it |
-| TC-7 | | Not run | |
-| TC-8 | 22/11/2026 | Pass | The lesson export downloaded and opened. Columns: Name, Email, Status, Checked in at. The course export also worked, with one column for each lesson |
-| TC-9 | 22/11/2026 | Pass | A Hebrew name appeared correctly in both files |
-| TC-10 | | Not run | |
-| TC-11 | | Not run | We tested with two students, not a full class |
+| TC-5 | 23/11/2026 | Pass | An old code was refused with "Code expired, please try again. The code on the classroom screen changes every 30 seconds." |
+| TC-6 | 23/11/2026 | Pass | The lecturer tapped a present student and the student became ABSENT. The counter went from 2/4 to 1/4 |
+| TC-7 | 23/11/2026 | Pass | The lecturer tapped an absent student and the student became PRESENT, with a time |
+| TC-8 | 23/11/2026 | Pass | The lesson export is an Excel file (.xlsx) with three sheets: Attendance, Polls and Comments. The Attendance sheet has the columns Name, Email, Status and Check-in time, and a legend for V, L and X. The course export is one Attendance sheet with one column for each lesson and the same legend |
+| TC-9 | 22/11/2026 | Pass | A Hebrew name appeared correctly in the export files |
+| TC-10 | 23/11/2026 | Pass | A student who opens a lecturer page by its link is sent to the student page. The student lesson page has no export button |
+| TC-11 | | Not run | We tested with two to four accounts, not a full class |
 | TC-12 | | Not in the demo | Photo headcount is design only |
 | TC-13 | | Not run | The form shows a 280-character counter |
-| TC-14 | 22/11/2026 | Pass | An anonymous comment appeared as "Anonymous", and a normal comment showed the name |
+| TC-14 | 22/11/2026 | Pass | An anonymous comment appeared as "Anonymous", and a normal comment showed the name. In the export, the anonymous comment has no email |
 | TC-15 | 22/11/2026 | Partly | A poll with 2 options was created. We did not test 6 options |
 | TC-16 | 22/11/2026 | Pass | After voting, the student saw "Thanks" again after a refresh, and the poll showed 1 vote |
 | TC-17 | 22/11/2026 | Pass | After the lecturer closed the poll, the student could no longer vote. The results stayed on the lecturer screen |
 | TC-18 to TC-20 | | Not in the demo | F4 and F5 are design only |
-| AT-1 | | Not run | We did not time the check-in with a stopwatch |
-| AT-2 | 22/11/2026 | Pass | See TC-8 |
+| TC-21 | 23/11/2026 | Pass | A student who opened a lecturer link was sent to "My courses". A wrong code gave "Wrong code" and the role stayed Student. With the right code the account became a lecturer and saw "No courses yet", so it did not see the courses of another lecturer. After switching back to student, the course and the current lesson were still there |
+| TC-22 | 23/11/2026 | Partly | "Mark answered" worked and the comment showed an "ANSWERED" label. A +1 on that answered comment was refused with "You can't +1 this comment". We did not test +1 on a comment that is still open |
+| TC-23 | 23/11/2026 | Pass | The lecturer page and a student page stayed open for about 4 minutes with an open poll. No error or rate-limit message appeared. After that a student voted, and the lecturer page showed "Yes 1 (100%), 1 vote" |
+| AT-1 | 23/11/2026 | Partly | The QR code and the code appeared about 2 seconds after the lecturer started the lesson. From starting the lesson to the student's confirmation, with typing the code on a phone, took 22.9 seconds. We did not time a scan alone from the moment the QR code is displayed |
+| AT-2 | 23/11/2026 | Pass | See TC-8 |
 | AT-3 | 22/11/2026 | Pass | A poll was created and answered in real time on two devices |
 | AT-4 | 22/11/2026 | Partly | On GitHub, the component diagram, the class diagram and sequence diagrams 4.4 and 4.5 displayed correctly. We still need to check the other diagrams and files |
 
-Notes from the export tests: the course export uses the letters V (present), L (late) and X (absent), and the file has no legend. We explain this in the demo.
+Notes from the export tests: the export is an Excel file, and the legend in the file explains V (present), L (late, checked in more than 15 minutes after the start) and X (absent). The first version of the app, tested on 22/11/2026, exported a CSV file without a legend, and the app was updated afterwards.
 
 Earlier, when we compared the tools, we ran a similar flow on a separate Base44 test project with one account. That test is described in the [tools report](tools-report.md). The results above are from the demo app itself.
 
