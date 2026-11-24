@@ -42,6 +42,7 @@ Data is stored in the platform's database. Login is by email (provided by the pl
 | FR-1.10 | On first login the user chooses Student (listed first) or Lecturer. Choosing Lecturer requires the secret lecturer access code, which is verified on the server and never displayed. After 5 wrong attempts at first login, the user becomes a student. At any time a user can change role from the header: lecturer to student freely, student to lecturer with the code (no attempt limit). | Must |
 | FR-1.11 | A lecturer can have only one open lesson at a time. A lesson that stays open for more than 4 hours is closed automatically. | Should |
 | FR-1.12 | The lecturer can export a single lesson as one Excel file: an attendance sheet with the legend, plus a poll results sheet and a comments sheet, each only if the lesson had polls or comments. Anonymous comments appear as "Anonymous". | Should |
+| FR-1.13 | As an alternative to scanning, a student can type the 6-character check-in code shown on the lecturer's screen. The same rules apply as for scanning (enrolled students only, no duplicates, code expires). The student's check-in screen explains both options. | Should |
 
 
 
@@ -49,7 +50,7 @@ Data is stored in the platform's database. Login is by email (provided by the pl
 ### F2: Feedback and suggestions
 | ID | Requirement | Priority |
 |----|-------------|----------|
-| FR-2.1 | A student can write a short comment (up to 280 characters) for a lesson, during or after it. | Should |
+| FR-2.1 | A student can write a short comment (up to 280 characters) for a lesson while it is open. | Should |
 | FR-2.2 | A student can choose to post anonymously (the name is hidden from the lecturer's view). | Should |
 | FR-2.3 | Students can "+1" a comment; the lecturer's view is sorted by number of +1s. | Could |
 | FR-2.4 | The lecturer can mark a comment as "answered". | Could |
