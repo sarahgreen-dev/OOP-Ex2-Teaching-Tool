@@ -26,7 +26,7 @@ Attendance with a spreadsheet export is the main feature, so it gets built first
 |---|---------|----------|--------------|
 | F1 | Attendance: students scan a QR code on the projector, the lecturer sees a live list and can export it to an Excel spreadsheet (.xlsx) | Must (main feature) | Yes |
 | F1b | Photo headcount: the lecturer takes a photo of the class, an LLM counts the people, and the app compares that to the number of check-ins | Should | Design only |
-| F2 | Comments and suggestions during or class, optionally anonymous | Should | Yes |
+| F2 | Comments and suggestions during class, optionally anonymous | Should | Yes |
 | F3 | Quick polls: one question, created in under 30 seconds, results update live | Must | Yes |
 | F4 | Video summary: the lecturer uploads a transcript exported from Zoom / Meet and gets a structured summary | Could | Design only |
 | F5 | Homework review: an LLM reviews a submission and compares it with the other submissions | Could | Design only |
