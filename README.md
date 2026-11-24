@@ -1,15 +1,15 @@
 # ClassPulse: a KISS teaching tool for the classroom
 
 > Introduction to Software Engineering, Ex2: "Vibe Coding & Deep Designing".
-> Authors: Sarah Green and Nerya Azani · Course: Object-Oriented Programming / Semester A (2026–2027) · Demo: [space-class-pulse-live.base44.app](https://space-class-pulse-live.base44.app/)
+> Authors: Sarah Green and Nerya Azani · Semester A (2026–2027) · Demo: [space-class-pulse-live.base44.app](https://space-class-pulse-live.base44.app/)
 
 ## 1. The problem
 
 Most lectures we sit in still start the same way: someone passes around a sign-in sheet, or the lecturer reads out names for five minutes. Half the time a friend signs for someone who isn't there, and the sheet ends up in a drawer.
 
-The rest of the lesson has similar gaps. Students who are shy about raising a hand have nowhere to ask a quick question. If the lecturer wants to know whether the class followed a topic, the only option is a full quiz in Moodle, so it usually doesn't happen. Recorded lessons run for an hour and a half, and the summary Zoom generates is pretty thin. Homework feedback comes back weeks later and doesn't tell you how your solution compares to anyone else's.
+The rest of the lesson has similar gaps. Students who are shy about raising a hand have nowhere to ask a quick question. If the lecturer wants to know whether the class followed a topic, the main option is a full quiz in Moodle, so it usually doesn't happen. Recorded lessons run for an hour and a half, and the summary Zoom generates is often too thin to be useful. Homework feedback comes back weeks later and doesn't tell you how your solution compares to anyone else's.
 
-None of the tools we use today (Moodle, Zoom chat, Google Forms, paper) were built to work with LLMs, even though a lot of this is exactly the kind of thing an LLM is good at.
+None of the tools we use today (Moodle, Zoom chat, Google Forms, paper) were designed around LLMs, and the AI features that do exist are bolted on, even though a lot of this is exactly the kind of thing an LLM is good at.
 
 ## 2. The idea
 
@@ -24,7 +24,7 @@ Attendance with a spreadsheet export is the main feature, so it gets built first
 
 | # | Feature | Priority | In the demo? |
 |---|---------|----------|--------------|
-| F1 | Attendance: students scan a QR code on the projector, the lecturer sees a live list and can export it to a spreadsheet (CSV / Google Sheets) | Must (main feature) | Yes |
+| F1 | Attendance: students scan a QR code on the projector, the lecturer sees a live list and can export it to an Excel spreadsheet (.xlsx) | Must (main feature) | Yes |
 | F1b | Photo headcount: the lecturer takes a photo of the class, an LLM counts the people, and the app compares that to the number of check-ins | Should | Design only |
 | F2 | Comments and suggestions during or after class, optionally anonymous | Should | Yes |
 | F3 | Quick polls: one question, created in under 30 seconds, results update live | Must | Yes |
@@ -54,12 +54,17 @@ docs/conclusions.md         results and lessons learned (after the demo)
 
 The demo is built with Base44, an AI app builder that comes with a database, login and LLM calls. The [tools report](docs/tools-report.md) explains why we picked it.
 
-1. Open the app: [space-class-pulse-live.base44.app](https://space-class-pulse-live.base44.app/)
-2. Log in. Choose "Lecturer" and enter the lecturer access code. Create a course and add the students (by hand or with a CSV file).
-3. Start a lesson and click "Show QR".
-4. Students scan the QR with the phone camera, or tap "Enter lesson code", and they are checked in.
-5. The lecturer creates a quick poll, and students vote. Students can also post a comment, anonymously if they want.
-6. The lecturer clicks "Export" to download the attendance as a spreadsheet.
+The lecturer access code is not stored in this repository. We give it to the course staff separately.
+
+1. Open the app: [space-class-pulse-live.base44.app](https://space-class-pulse-live.base44.app/) and log in.
+2. Choose "Lecturer" and enter the lecturer access code. Create a course and add the students by email (by hand or with a CSV file). A student logs in with the email that was added to the course.
+3. Start a lesson. The screen shows a QR code and a 6-character code that changes every 30 seconds.
+4. Students scan the QR with the phone camera, or tap "Enter lesson code" or "Check in" and type the code. The lecturer sees the live list and the counter.
+5. The lecturer clicks "New poll" and students vote. Students can also post a comment, anonymously if they want. The lecturer can click "Mark answered" on a comment.
+6. The lecturer clicks "Export lesson (Excel)" to download the attendance, polls and comments. The course page has a course export with one column for each lesson. The file has a legend: V is present, L is late and X is absent.
+7. The lecturer clicks "End lesson".
+
+The results of our tests and their screenshots are in [docs/testing-strategy.md](docs/testing-strategy.md) and in `docs/screenshots/`.
 
 ## 6. Status
 
